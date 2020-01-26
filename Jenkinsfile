@@ -4,12 +4,32 @@ pipeline {
         stage('Compile Stage') {
             steps {
             	
-            	withMaven(maven:'maven'){
+            	withMaven(maven:'maven_3_5_2'){
             			bat 'mvn --version'
-            			bat 'mvn clean compile'
             	}
                 
             }
         }
+        
+        stage('Testing Stage') {
+            steps {
+            	
+            	withMaven(maven:'maven_3_5_2'){
+            			bat 'mvn test'
+            	}
+                
+            }
+        }
+        
+        stage('Testing Stage') {
+            steps {
+            	
+            	withMaven(maven:'maven_3_5_2'){
+            			bat 'mvn deploy'
+            	}
+                
+            }
+        }
+        
     }
 }
